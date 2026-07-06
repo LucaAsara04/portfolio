@@ -1,1 +1,4 @@
-TEST
+git pull
+git add .
+git commit -m "Descrizione modifica"
+git push
