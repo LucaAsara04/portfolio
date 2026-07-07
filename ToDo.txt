@@ -1,8 +1,9 @@
-GIT
+GIT / Deploy
     git pull
     git add .
     git commit -m "Descrizione modifica"
     git push
+    npm run deploy
 
 React (Vite)
     Framework   React
