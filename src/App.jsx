@@ -167,8 +167,20 @@ function App() {
         </div>
 
         <div className="desktop">
-          {folders.map((folder) => (
-            <div key={folder} className="folder">
+          {folders.map((folder, index) => (
+            <div
+              key={folder}
+              className="folder"
+              style={{
+                color: [
+                  "#00F5FF", // About Me
+                  "#7B61FF", // Istruzione
+                  "#00FF88", // Esperienze
+                  "#FFC857", // Competenze
+                  "#FF6B6B", // Contatti
+                ][index],
+              }}
+            >
               <div className="folder-icon">📁</div>
               <span>{folder}</span>
             </div>
