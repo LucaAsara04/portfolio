@@ -3,7 +3,7 @@ GIT / Deploy
     git add .
     git commit -m "Descrizione modifica"
     git push
-    npm run deploy
+    npm run deploy | npm run dev 
 
 React (Vite)
     Framework   React
