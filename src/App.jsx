@@ -4,7 +4,11 @@ import "./App.css";
 function App() {
   const [bootComplete, setBootComplete] = useState(false);
   const [showDesktop, setShowDesktop] = useState(false);
+
   const [visibleLines, setVisibleLines] = useState([]);
+  const [currentLine, setCurrentLine] = useState("");
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
 
   const bootLines = [
     "SYSTEM BOOT SEQUENCE",
@@ -25,11 +29,7 @@ function App() {
     let index = 0;
 
     const interval = setInterval(() => {
-      setVisibleLines((prev) => [
-        ...prev,
-        bootLines[index]
-      ]);
-
+      setVisibleLines((prev) => [...prev, bootLines[index]]);
       index++;
 
       if (index >= bootLines.length) {
@@ -55,11 +55,18 @@ function App() {
   if (!bootComplete) {
     return (
       <div className="boot-screen">
-        {visibleLines.map((line, index) => (
-          <div key={index}>{line}</div>
-        ))}
+        <div className="boot-content">
+          {visibleLines.map((line, index) => (
+            <div key={index} className="boot-line">
+              {line}
+            </div>
+          ))}
 
-        <span className="cursor">█</span>
+          <div className="boot-line active-line">
+            {currentLine}
+            <span className="cursor">█</span>
+          </div>
+        </div>
       </div>
     );
   }
@@ -68,11 +75,12 @@ function App() {
     return (
       <div className="welcome-screen">
         <div className="hero-title">
-          <h1>ASARA LUCA</h1>
-          <h2>Digital Support & Data Analyst</h2>
+          <h1 className="hero-name">ASARA LUCA</h1>
+          <h2 className="hero-role">Digital Support & Data Analyst</h2>
         </div>
 
         <button
+          className="enter-button"
           onClick={() => setShowDesktop(true)}
         >
           ENTER
