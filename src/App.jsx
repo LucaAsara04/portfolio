@@ -25,7 +25,11 @@ function App() {
     let index = 0;
 
     const interval = setInterval(() => {
-      setVisibleLines((prev) => [...prev, bootLines[index]]);
+      setVisibleLines((prev) => [
+        ...prev,
+        bootLines[index]
+      ]);
+
       index++;
 
       if (index >= bootLines.length) {
@@ -45,7 +49,7 @@ function App() {
     "Istruzione e Formazione",
     "Esperienze Professionali",
     "Competenze",
-    "Contatti",
+    "Contatti"
   ];
 
   if (!bootComplete) {
@@ -63,11 +67,14 @@ function App() {
   if (!showDesktop) {
     return (
       <div className="welcome-screen">
-        <h1>ASARA LUCA</h1>
+        <div className="hero-title">
+          <h1>ASARA LUCA</h1>
+          <h2>Digital Support & Data Analyst</h2>
+        </div>
 
-        <h2>Digital Support & Data Analyst</h2>
-
-        <button onClick={() => setShowDesktop(true)}>
+        <button
+          onClick={() => setShowDesktop(true)}
+        >
           ENTER
         </button>
       </div>
@@ -83,16 +90,14 @@ function App() {
         </div>
 
         <div className="desktop">
-
           {folders.map((folder) => (
             <div key={folder} className="folder">
               <div className="folder-icon">📁</div>
-
               <span>{folder}</span>
             </div>
           ))}
-
         </div>
+
       </div>
     </div>
   );
