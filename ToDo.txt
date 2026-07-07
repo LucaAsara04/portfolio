@@ -1,4 +1,10 @@
-git pull
-git add .
-git commit -m "Descrizione modifica"
-git push
+GIT
+    git pull
+    git add .
+    git commit -m "Descrizione modifica"
+    git push
+
+React (Vite)
+    Framework   React
+    Variant     JavaScript
+    Linter      ESLint
