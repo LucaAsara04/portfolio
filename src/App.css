@@ -13,22 +13,38 @@ body {
 /* BOOT SCREEN */
 
 .boot-screen {
+  width: 100%;
   height: 100vh;
+
   background: black;
   color: #00ff88;
 
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
 
   padding-left: 60px;
 
   font-family: Consolas, monospace;
+}
+
+.boot-content {
   font-size: 20px;
-  line-height: 1.8; 
+  line-height: 1.8;
+}
+
+.boot-line {
+  min-height: 36px;
+  white-space: pre-wrap;
+}
+
+.active-line {
+  display: flex;
+  align-items: center;
 }
 
 .cursor {
+  margin-left: 4px;
   animation: blink 1s infinite;
 }
 
@@ -41,6 +57,7 @@ body {
 /* WELCOME SCREEN */
 
 .welcome-screen {
+  width: 100%;
   height: 100vh;
 
   display: flex;
@@ -48,30 +65,35 @@ body {
   justify-content: center;
   align-items: center;
 
-  gap: 20px;
+  gap: 28px;
+
+  background:
+    radial-gradient(circle at center, rgba(0, 245, 255, 0.08), transparent 35%),
+    #050816;
 }
 
 .hero-title {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
 
+.hero-name {
   font-size: 4rem;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   margin-bottom: 15px;
 }
 
-.hero-title h2 {
-  font-size: 1rem;
+.hero-role {
+  font-size: 1.3rem;
   font-weight: 300;
   color: #c7c7c7;
 }
 
-.welcome-screen button {
-  margin-top: 20px;
+.enter-button {
+  margin-top: 10px;
 
-  padding: 10px 36px;
-
+  padding: 14px 36px;
   border: none;
   border-radius: 8px;
 
@@ -79,20 +101,41 @@ body {
 
   font-size: 1rem;
   font-weight: bold;
+  letter-spacing: 2px;
 
   background-color: #00f5ff;
   color: black;
 
-  transition: 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+
+  animation: fadeUp 0.9s ease forwards;
+  animation-delay: 1.6s;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.welcome-screen button:hover {
+.enter-button:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.6);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* DESKTOP */
 
 .desktop-container {
+  width: 100%;
   height: 100vh;
 
   display: flex;
@@ -100,6 +143,10 @@ body {
   align-items: center;
 
   padding: 30px;
+
+  background:
+    radial-gradient(circle at center, rgba(0, 245, 255, 0.08), transparent 35%),
+    #050816;
 }
 
 .monitor {
@@ -114,6 +161,7 @@ body {
   overflow: hidden;
 
   box-shadow: 0 0 25px rgba(0, 245, 255, 0.3);
+  background-color: rgba(5, 8, 22, 0.95);
 }
 
 .monitor-header {
@@ -125,9 +173,11 @@ body {
   align-items: center;
 
   padding-left: 20px;
+
   border-bottom: 1px solid #00f5ff;
 
   font-weight: bold;
+  letter-spacing: 2px;
 }
 
 .desktop {
@@ -161,8 +211,8 @@ body {
 
 .folder span {
   text-align: center;
-
   margin-top: 10px;
 
   font-size: 0.95rem;
+  line-height: 1.3;
 }

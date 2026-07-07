@@ -1,56 +1,121 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
+const bootLines = [
+  "SYSTEM BOOT SEQUENCE",
+  "",
+  "Initializing modules...",
+  "Loading profile...",
+  "Loading education...",
+  "Loading professional experience...",
+  "Loading skills...",
+  "Loading contacts...",
+  "",
+  "System ready.",
+  "",
+  "Launching interface..."
+];
+
+const folders = [
+  "About Me",
+  "Istruzione e Formazione",
+  "Esperienze Professionali",
+  "Competenze",
+  "Contatti"
+];
+
 function App() {
   const [bootComplete, setBootComplete] = useState(false);
   const [showDesktop, setShowDesktop] = useState(false);
+  const [displayName, setDisplayName] = useState("");
+  const [displayRole, setDisplayRole] = useState("");
 
   const [visibleLines, setVisibleLines] = useState([]);
   const [currentLine, setCurrentLine] = useState("");
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
 
-  const bootLines = [
-    "SYSTEM BOOT SEQUENCE",
-    "",
-    "Initializing modules...",
-    "Loading profile...",
-    "Loading education...",
-    "Loading professional experience...",
-    "Loading skills...",
-    "Loading contacts...",
-    "",
-    "System ready.",
-    "",
-    "Launching interface..."
-  ];
+  useEffect(() => {
+    if (bootComplete) {
+      return;
+    }
+
+    if (currentLineIndex >= bootLines.length) {
+      const completeTimer = setTimeout(() => {
+        setBootComplete(true);
+      }, 800);
+
+      return () => clearTimeout(completeTimer);
+    }
+
+    const line = bootLines[currentLineIndex];
+
+    if (line === "") {
+      const emptyLineTimer = setTimeout(() => {
+        setVisibleLines((prev) => [...prev, ""]);
+        setCurrentLine("");
+        setCurrentCharIndex(0);
+        setCurrentLineIndex((prev) => prev + 1);
+      }, 250);
+
+      return () => clearTimeout(emptyLineTimer);
+    }
+
+    if (currentCharIndex < line.length) {
+      const typingTimer = setTimeout(() => {
+        setCurrentLine((prev) => prev + line[currentCharIndex]);
+        setCurrentCharIndex((prev) => prev + 1);
+      }, 35);
+
+      return () => clearTimeout(typingTimer);
+    }
+
+    const nextLineTimer = setTimeout(() => {
+      setVisibleLines((prev) => [...prev, line]);
+      setCurrentLine("");
+      setCurrentCharIndex(0);
+      setCurrentLineIndex((prev) => prev + 1);
+    }, 350);
+
+    return () => clearTimeout(nextLineTimer);
+  }, [bootComplete, currentLineIndex, currentCharIndex]);
 
   useEffect(() => {
-    let index = 0;
+    if (!bootComplete) return;
 
-    const interval = setInterval(() => {
-      setVisibleLines((prev) => [...prev, bootLines[index]]);
-      index++;
+    const fullName = "ASARA LUCA";
+    const fullRole = "Digital Support & Data Analyst";
 
-      if (index >= bootLines.length) {
-        clearInterval(interval);
+    let nameIndex = 0;
 
-        setTimeout(() => {
-          setBootComplete(true);
-        }, 1000);
+    const writeName = setInterval(() => {
+      nameIndex++;
+
+      setDisplayName(
+        fullName.substring(0, nameIndex)
+      );
+
+      if (nameIndex >= fullName.length) {
+        clearInterval(writeName);
+
+        let roleIndex = 0;
+
+        const writeRole = setInterval(() => {
+          roleIndex++;
+
+          setDisplayRole(
+            fullRole.substring(0, roleIndex)
+          );
+
+          if (roleIndex >= fullRole.length) {
+            clearInterval(writeRole);
+          }
+        }, 35);
       }
-    }, 500);
+    }, 80);
 
-    return () => clearInterval(interval);
-  }, []);
-
-  const folders = [
-    "About Me",
-    "Istruzione e Formazione",
-    "Esperienze Professionali",
-    "Competenze",
-    "Contatti"
-  ];
+    return () => clearInterval(writeName);
+  }, [bootComplete]);
 
   if (!bootComplete) {
     return (
@@ -64,7 +129,7 @@ function App() {
 
           <div className="boot-line active-line">
             {currentLine}
-            <span className="cursor">█</span>
+            <span className="cursor"></span>
           </div>
         </div>
       </div>
@@ -75,8 +140,13 @@ function App() {
     return (
       <div className="welcome-screen">
         <div className="hero-title">
-          <h1 className="hero-name">ASARA LUCA</h1>
-          <h2 className="hero-role">Digital Support & Data Analyst</h2>
+          <h1 className="hero-name">
+            {displayName}
+          </h1>
+
+          <h2 className="hero-role">
+            {displayRole}
+          </h2>
         </div>
 
         <button
@@ -92,7 +162,6 @@ function App() {
   return (
     <div className="desktop-container">
       <div className="monitor">
-
         <div className="monitor-header">
           LUCA OS
         </div>
@@ -105,11 +174,9 @@ function App() {
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );
 }
 
 export default App;
-``
