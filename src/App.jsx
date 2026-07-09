@@ -196,6 +196,27 @@ function App() {
   if (!showDesktop) {
     return (
       <div className="welcome-screen">
+
+        <div className="matrix-background">
+          {Array.from({ length: 40}).map((_, index) => (
+            <div
+              key={index}
+              className="matrix-column"
+              style={{
+                left: `${index * 2.5}%`,
+                animationDelay: `${Math.random() * 8}s`,
+                animationDuration: `${8 + Math.random() * 8}s`,
+              }}
+            >
+              {Array.from({ length: 25 }).map((_, i) => (
+                <span key={i}>
+                  {Math.random() > 0.5 ? "1" : "0"}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+
         <div className="hero-title">
           <h1 className="hero-name">
             {displayName}
@@ -212,6 +233,7 @@ function App() {
         >
           ENTER
         </button>
+
       </div>
     );
   }
