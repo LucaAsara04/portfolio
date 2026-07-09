@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import narutoPanel from "./assets/images/naruto-panel.jpg";
+
 
 const bootLines = [
   "SYSTEM BOOT SEQUENCE",
@@ -28,6 +30,7 @@ const folders = [
 function App() {
   const [bootComplete, setBootComplete] = useState(false);
   const [showDesktop, setShowDesktop] = useState(false);
+  const [activeFolder, setActiveFolder] = useState(null);
   const [displayName, setDisplayName] = useState("");
   const [displayRole, setDisplayRole] = useState("");
 
@@ -172,23 +175,129 @@ function App() {
             <div
               key={folder}
               className="folder"
-              style={{
-                color: [
-                  "#00F5FF", // About Me
-                  "#26aade", // Istruzione   
-                  "#7B61FF", // Esperienze
-                  "#00FF88", // Competenze
-                  "#FFC857", // Contatti
-                  "#FF6B6B"  // Progetti
-                ][index],
+              onClick={() => {
+                if (folder === "About Me") {
+                  setActiveFolder("about");
+                }
               }}
             >
-              <div className="folder-icon">📁</div>
-              <span>{folder}</span>
+              <div
+                className="folder-icon"
+                style={{
+                  color: [
+                    "#00F5FF",
+                    "#7B61FF",
+                    "#00FF88",
+                    "#FFC857",
+                    "#FF6B6B",
+                  ][index],
+                }}
+              >
+                📁
+              </div>
+
+              <span
+                style={{
+                  color: [
+                    "#00F5FF",
+                    "#7B61FF",
+                    "#00FF88",
+                    "#FFC857",
+                    "#FF6B6B",
+                  ][index],
+                }}
+              >
+                {folder}
+              </span>
             </div>
           ))}
         </div>
       </div>
+
+      {activeFolder === "about" && (
+        <div className="card-overlay">
+          <div className="about-card">
+            <div className="card-header">
+              <span>ABOUT_ME.exe</span>
+
+              <button
+                className="card-close"
+                onClick={() => setActiveFolder(null)}
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="card-content">
+              <h2>About Me</h2>
+
+              <p className="about-intro">
+                Digital Support & Data Analyst con esperienza nella trasformazione
+                digitale dei processi aziendali. Mi occupo di automazione, analisi
+                dei dati e soluzioni Microsoft 365, con particolare attenzione
+                all'efficienza operativa e all'innovazione. Appassionato di
+                tecnologia, apprendimento continuo e problem solving, cerco sempre
+                di comprendere a fondo i sistemi prima di implementarli.
+              </p>
+
+              <div className="about-section-title">
+                Interests & Hobbies
+              </div>
+
+              <div className="hobby-placeholder">
+                <span>MODULE_01</span>
+
+                <strong>Anime & Manga</strong>
+
+                <div className="anime-panel-container">
+                  <img
+                    src={narutoPanel}
+                    alt="Naruto Panel"
+                    className="anime-panel"
+                  />
+                </div>
+
+                <div className="anime-content">
+                  <h3>Naruto</h3>
+
+                  <p>
+                    Guardo anime e manga da molti anni e rappresentano una delle passioni
+                    che mi accompagnano fin dall'infanzia. Tra tutte le opere che ho visto,
+                    quella che più mi ha influenzato è senza dubbio Naruto, una serie che
+                    seguo da quando ero bambino e che continua ancora oggi ad occupare un
+                    posto speciale tra i miei interessi.
+                  </p>
+
+                  <p>
+                    Al di là della storia e dei personaggi, Naruto mi ha trasmesso valori
+                    che ritengo fondamentali anche nella vita professionale. Mi ha insegnato
+                    a non arrendermi davanti alle difficoltà, a migliorare costantemente
+                    attraverso l'impegno e la disciplina e a credere che la crescita sia un
+                    processo graduale costruito nel tempo.
+                  </p>
+
+                  <p>
+                    Un altro insegnamento che porto con me è l'importanza del lavoro di
+                    squadra. Gran parte dei risultati più importanti nella serie vengono
+                    raggiunti grazie alla collaborazione, alla fiducia reciproca e alla
+                    capacità di valorizzare le competenze di ogni persona.
+                  </p>
+
+                  <div className="learned-values">
+                    <h4>LEARNED VALUES</h4>
+
+                    <ul>
+                      <li>Perseveranza</li>
+                      <li>Miglioramento continuo</li>
+                      <li>Lavoro di squadra</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

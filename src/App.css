@@ -230,3 +230,257 @@ body {
   font-size: 1.2rem;
   line-height: 1.4;
 }
+
+/* ABOUT CARD */
+
+.card-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+
+  z-index: 20;
+}
+
+.about-card {
+  width: min(850px, 90%);
+  max-height: 78vh;
+
+  background:
+    linear-gradient(135deg, rgba(5, 8, 22, 0.98), rgba(10, 18, 38, 0.98));
+
+  border: 1px solid #00f5ff;
+  border-radius: 18px;
+
+  box-shadow:
+    0 0 30px rgba(0, 245, 255, 0.35),
+    inset 0 0 25px rgba(0, 245, 255, 0.08);
+
+  overflow: hidden;
+
+  animation: cardZoom 0.35s ease forwards;
+}
+
+.card-header {
+  height: 52px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 20px;
+
+  background: rgba(16, 24, 39, 0.95);
+
+  border-bottom: 1px solid rgba(0, 245, 255, 0.6);
+
+  color: #00f5ff;
+
+  font-family: Consolas, monospace;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+}
+
+.card-close {
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid rgba(255, 107, 107, 0.8);
+  border-radius: 8px;
+
+  background: transparent;
+  color: #ff6b6b;
+
+  cursor: pointer;
+
+  font-size: 1.4rem;
+  line-height: 1;
+
+  transition: 0.25s ease;
+}
+
+.card-close:hover {
+  background: rgba(255, 107, 107, 0.15);
+  box-shadow: 0 0 14px rgba(255, 107, 107, 0.6);
+}
+
+.card-content {
+  padding: 34px 40px;
+
+  overflow-y: auto;
+  max-height: calc(78vh - 52px);
+}
+
+.card-content h2 {
+  margin-bottom: 22px;
+
+  color: #ffffff;
+
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+.about-intro {
+  max-width: 760px;
+
+  color: #d7e1f2;
+
+  font-size: 1.05rem;
+  line-height: 1.8;
+
+  border-left: 3px solid #00f5ff;
+  padding-left: 18px;
+}
+
+.about-section-title {
+  margin-top: 34px;
+  margin-bottom: 18px;
+
+  color: #00f5ff;
+
+  font-family: Consolas, monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hobby-placeholder {
+  padding: 22px;
+
+  border: 1px solid rgba(0, 245, 255, 0.25);
+  border-radius: 14px;
+
+  background: rgba(0, 245, 255, 0.04);
+}
+
+.hobby-placeholder span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #00ff88;
+
+  font-family: Consolas, monospace;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+
+.hobby-placeholder strong {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.hobby-placeholder p {
+  color: #c7c7c7;
+  line-height: 1.7;
+}
+
+@keyframes cardZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.82) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.anime-panel-placeholder {
+  height: 260px;
+
+  margin: 20px 0 25px 0;
+
+  border: 2px dashed rgba(0, 245, 255, 0.4);
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #00f5ff;
+
+  font-family: Consolas, monospace;
+  letter-spacing: 2px;
+
+  background: rgba(0, 245, 255, 0.03);
+}
+
+.anime-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+
+  color: white;
+}
+
+.anime-content p {
+  line-height: 1.9;
+  color: #d7e1f2;
+
+  margin-bottom: 18px;
+}
+
+.learned-values {
+  margin-top: 30px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid rgba(0, 245, 255, 0.2);
+}
+
+.learned-values h4 {
+  color: #00ff88;
+
+  margin-bottom: 15px;
+
+  font-family: Consolas, monospace;
+  letter-spacing: 2px;
+}
+
+.learned-values ul {
+  list-style: none;
+
+  display: flex;
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+.learned-values li {
+  padding: 10px 18px;
+
+  border-radius: 10px;
+
+  border: 1px solid rgba(0, 245, 255, 0.3);
+
+  background: rgba(0, 245, 255, 0.05);
+
+  color: #ffffff;
+}
+
+.anime-panel-container {
+  margin: 20px 0 25px 0;
+}
+
+.anime-panel {
+  width: 100%;
+
+  max-height: 400px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(0, 245, 255, 0.3);
+
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.15);
+}
