@@ -188,6 +188,10 @@ function App() {
                 if (folder === "Esperienze Professionali") {
                   setActiveFolder("experience");
                 }
+
+                if (folder === "Competenze") {
+                  setActiveFolder("skills");
+                }
               }}
             >
               <div
@@ -594,8 +598,140 @@ function App() {
           </div>
         </div>
       )}
+
+      {activeFolder === "skills" && (
+        <div className="card-overlay">
+          <div className="about-card">
+
+            <div className="card-header">
+              <span>SKILLS.db</span>
+
+              <button
+                className="card-close"
+                onClick={() => setActiveFolder(null)}
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="card-content">
+
+              <h2>Competenze</h2>
+
+              <p className="about-intro">
+                Nel corso del mio percorso di studi e dell'esperienza professionale
+                ho sviluppato competenze tecniche e trasversali che mi permettono
+                oggi di affrontare progetti di digitalizzazione, automazione,
+                gestione dati e supporto agli utenti con un approccio strutturato e
+                orientato al miglioramento continuo.
+              </p>
+
+              <div className="hobby-placeholder">
+
+                <span>MODULE_01</span>
+
+                <strong>Hard Skills</strong>
+
+                <div className="anime-content">
+
+                  <p>
+                    Le competenze tecniche che ho acquisito derivano dall'unione tra
+                    formazione e attività svolte sul campo. Nel tempo ho avuto modo
+                    di lavorare con strumenti e tecnologie legate ai dati,
+                    all'automazione e agli ecosistemi Microsoft.
+                  </p>
+
+                  <p>
+                    Utilizzo quotidianamente Microsoft 365, SharePoint e Power
+                    Automate per supportare processi aziendali, creare soluzioni
+                    digitali e migliorare l'efficienza operativa.
+                  </p>
+
+                  <p>
+                    Parallelamente continuo ad approfondire SQL, Python,
+                    amministrazione di sistemi e networking, con l'obiettivo di
+                    comprendere sempre più a fondo il funzionamento delle tecnologie
+                    che utilizzo.
+                  </p>
+
+                  <div className="learned-values">
+
+                    <h4>TECHNICAL SKILLS</h4>
+
+                    <ul>
+                      <li>Microsoft 365</li>
+                      <li>Power Automate</li>
+                      <li>SharePoint</li>
+                      <li>SQL</li>
+                      <li>Python</li>
+                      <li>Excel Advanced</li>
+                      <li>Git & GitHub</li>
+                      <li>Networking</li>
+                      <li>Data Analysis</li>
+                    </ul>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div className="hobby-placeholder">
+
+                <span>MODULE_02</span>
+
+                <strong>Soft Skills</strong>
+
+                <div className="anime-content">
+
+                  <p>
+                    Oltre alle competenze tecniche, considero fondamentali le
+                    capacità trasversali sviluppate durante gli studi e l'esperienza
+                    professionale. Sono spesso queste competenze a permettere di
+                    trasformare una buona idea in una soluzione realmente utile.
+                  </p>
+
+                  <p>
+                    Lavorando con persone provenienti da reparti diversi ho imparato
+                    l'importanza dell'ascolto, della comunicazione chiara e della
+                    capacità di comprendere esigenze differenti prima di proporre una
+                    soluzione.
+                  </p>
+
+                  <p>
+                    Ho inoltre sviluppato un approccio orientato all'apprendimento
+                    continuo, all'analisi dei problemi e alla ricerca delle cause,
+                    cercando sempre di comprendere il funzionamento di un processo
+                    prima di intervenire su di esso.
+                  </p>
+
+                  <div className="learned-values">
+
+                    <h4>SOFT SKILLS</h4>
+
+                    <ul>
+                      <li>Problem Solving</li>
+                      <li>Team Working</li>
+                      <li>Comunicazione</li>
+                      <li>Pensiero Analitico</li>
+                      <li>Curiosità</li>
+                      <li>Apprendimento Continuo</li>
+                      <li>Gestione delle Priorità</li>
+                      <li>Adattabilità</li>
+                    </ul>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
+      
     </div>
   );
 }
-
 export default App;
