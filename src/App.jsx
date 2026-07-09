@@ -23,9 +23,9 @@ const folders = [
   "Istruzione e Formazione",
   "Esperienze Professionali",
   "Competenze",
-  "Contatti",
   "Progetti",
-  "About Me"
+  "About Me",
+  "Contatti"
 ];
 
 function App() {
