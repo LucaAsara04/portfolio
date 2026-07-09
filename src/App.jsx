@@ -21,7 +21,8 @@ const folders = [
   "Istruzione e Formazione",
   "Esperienze Professionali",
   "Competenze",
-  "Contatti"
+  "Contatti",
+  "Progetti"
 ];
 
 function App() {
@@ -174,10 +175,11 @@ function App() {
               style={{
                 color: [
                   "#00F5FF", // About Me
-                  "#7B61FF", // Istruzione
-                  "#00FF88", // Esperienze
-                  "#FFC857", // Competenze
-                  "#FF6B6B", // Contatti
+                  "#26aade", // Istruzione   
+                  "#7B61FF", // Esperienze
+                  "#00FF88", // Competenze
+                  "#FFC857", // Contatti
+                  "#FF6B6B"  // Progetti
                 ][index],
               }}
             >

@@ -5,6 +5,9 @@ GIT / Deploy
     git push
     npm run deploy | npm run dev 
 
+Deploy: https://lucaasara04.github.io/portfolio/
+Devel : http://localhost:5173/portfolio/
+
 React (Vite)
     Framework   React
     Variant     JavaScript
