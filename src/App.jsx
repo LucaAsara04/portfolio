@@ -20,12 +20,12 @@ const bootLines = [
 ];
 
 const folders = [
-  "About Me",
   "Istruzione e Formazione",
   "Esperienze Professionali",
   "Competenze",
   "Contatti",
-  "Progetti"
+  "Progetti",
+  "About Me"
 ];
 
 function App() {
@@ -321,6 +321,7 @@ function App() {
                     "#00FF88",
                     "#FFC857",
                     "#FF6B6B",
+                    "#d22626",
                   ][index],
                 }}
               >
@@ -331,10 +332,11 @@ function App() {
                 style={{
                   color: [
                     "#00F5FF",
-                    "#7B61FF",
-                    "#00FF88",
-                    "#FFC857",
-                    "#FF6B6B",
+                    "#243ee6",
+                    "#9c29e9",
+                    "#fbef49",
+                    "#ec9121",
+                    "#ea2a2ada",
                   ][index],
                 }}
               >
