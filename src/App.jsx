@@ -46,6 +46,7 @@ function App() {
   const [cvGenerating, setCvGenerating] = useState(false);
   const [cvProgress, setCvProgress] = useState(0);
   const [cvReady, setCvReady] = useState(false);
+  const [cvVisibleLines, setCvVisibleLines] = useState([]);
 
   useEffect(() => {
     if (bootComplete) {
@@ -136,6 +137,7 @@ function App() {
       setCvGenerating(false);
       setCvProgress(0);
       setCvReady(false);
+      setCvVisibleLines([]);
       return;
     }
 
@@ -218,14 +220,46 @@ function App() {
     setCvGenerating(true);
     setCvReady(false);
     setCvProgress(0);
+    setCvVisibleLines([]);
 
-    let progress = 0;
+    const generationSteps = [
+      {
+        progress: 20,
+        text: "Collecting profile data... [OK]",
+      },
+      {
+        progress: 40,
+        text: "Extracting education modules... [OK]",
+      },
+      {
+        progress: 60,
+        text: "Analyzing professional experience... [OK]",
+      },
+      {
+        progress: 80,
+        text: "Loading skills database... [OK]",
+      },
+      {
+        progress: 100,
+        text: "Building PDF document... [OK]",
+      },
+    ];
+
+    let stepIndex = 0;
 
     const interval = setInterval(() => {
-      progress += 20;
-      setCvProgress(progress);
+      const currentStep = generationSteps[stepIndex];
 
-      if (progress >= 100) {
+      setCvProgress(currentStep.progress);
+
+      setCvVisibleLines((prev) => [
+        ...prev,
+        currentStep.text,
+      ]);
+
+      stepIndex++;
+
+      if (stepIndex >= generationSteps.length) {
         clearInterval(interval);
 
         setTimeout(() => {
@@ -238,9 +272,9 @@ function App() {
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
-        }, 600);
+        }, 2000);
       }
-    }, 1500);
+    }, 1000);
   };
 
 
@@ -915,31 +949,18 @@ function App() {
 
                     {cvGenerating && (
                       <div className="cv-loading-box">
-                        <div className="cv-loading-line">
-                          Collecting profile data... [OK]
-                        </div>
 
-                        <div className="cv-loading-line">
-                          Extracting education modules... [OK]
-                        </div>
-
-                        <div className="cv-loading-line">
-                          Analyzing professional experience... [OK]
-                        </div>
-
-                        <div className="cv-loading-line">
-                          Loading skills database... [OK]
-                        </div>
-
-                        <div className="cv-loading-line">
-                          Building PDF document...
-                        </div>
+                        {cvVisibleLines.map((line, index) => (
+                          <div key={index} className="cv-loading-line">
+                            {line}
+                          </div>
+                        ))}
 
                         <div className="cv-progress-bar">
                           <div
                             className="cv-progress-fill"
                             style={{
-                              width: `${cvProgress}%`
+                              width: `${cvProgress}%`,
                             }}
                           ></div>
                         </div>
@@ -947,6 +968,7 @@ function App() {
                         <div className="cv-progress-text">
                           {cvProgress}%
                         </div>
+
                       </div>
                     )}
 
