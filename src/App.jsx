@@ -40,6 +40,13 @@ function App() {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
 
+  const [contactVisibleLines, setContactVisibleLines] = useState([]);
+  const [contactReady, setContactReady] = useState(false);
+
+  const [cvGenerating, setCvGenerating] = useState(false);
+  const [cvProgress, setCvProgress] = useState(0);
+  const [cvReady, setCvReady] = useState(false);
+
   useEffect(() => {
     if (bootComplete) {
       return;
@@ -122,6 +129,49 @@ function App() {
     return () => clearInterval(writeName);
   }, [bootComplete]);
 
+  useEffect(() => {
+    if (activeFolder !== "contacts") {
+      setContactVisibleLines([]);
+      setContactReady(false);
+      setCvGenerating(false);
+      setCvProgress(0);
+      setCvReady(false);
+      return;
+    }
+
+    const contactLines = [
+      "Initializing communication module...",
+      "Searching available channels...",
+      "[OK] Email channel detected",
+      "[OK] Phone channel detected",
+      "[OK] LinkedIn profile detected",
+      "[OK] GitHub repository detected",
+      "Connection established."
+    ];
+
+    let index = 0;
+
+    const interval = setInterval(() => {
+      setContactVisibleLines((prev) => [
+        ...prev,
+        contactLines[index]
+      ]);
+
+      index++;
+
+      if (index >= contactLines.length) {
+        clearInterval(interval);
+
+        setTimeout(() => {
+          setContactReady(true);
+        }, 2500);
+      }
+    }, 900);
+
+    return () => clearInterval(interval);
+  }, [activeFolder]);
+
+
   if (!bootComplete) {
     return (
       <div className="boot-screen">
@@ -164,6 +214,36 @@ function App() {
     );
   }
 
+  const handleGenerateCv = () => {
+    setCvGenerating(true);
+    setCvReady(false);
+    setCvProgress(0);
+
+    let progress = 0;
+
+    const interval = setInterval(() => {
+      progress += 20;
+      setCvProgress(progress);
+
+      if (progress >= 100) {
+        clearInterval(interval);
+
+        setTimeout(() => {
+          setCvReady(true);
+
+          const link = document.createElement("a");
+          link.href = `${import.meta.env.BASE_URL}cv/CV_Luca_Asara.pdf`;
+          link.download = "CV_Luca_Asara.pdf";
+
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }, 600);
+      }
+    }, 1500);
+  };
+
+
   return (
     <div className="desktop-container">
       <div className="monitor">
@@ -191,6 +271,10 @@ function App() {
 
                 if (folder === "Competenze") {
                   setActiveFolder("skills");
+                }
+
+                if (folder === "Contatti") {
+                  setActiveFolder("contacts");
                 }
               }}
             >
@@ -730,7 +814,157 @@ function App() {
           </div>
         </div>
       )}
-      
+
+      {activeFolder === "contacts" && (
+        <div className="card-overlay">
+          <div className="about-card">
+
+            <div className="card-header">
+              <span>CONTACT_PROTOCOL.exe</span>
+
+              <button
+                className="card-close"
+                onClick={() => setActiveFolder(null)}
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="card-content">
+
+              <h2>Contatti</h2>
+
+              <p className="about-intro">
+                Questa sezione raccoglie i principali canali attraverso cui è possibile
+                entrare in contatto con me, consultare i miei profili professionali
+                o scaricare una versione sintetica del mio percorso in formato PDF.
+              </p>
+
+              <div className="contact-terminal">
+                {contactVisibleLines.map((line, index) => (
+                  <div key={index} className="contact-terminal-line">
+                    {line}
+                  </div>
+                ))}
+
+                {!contactReady && (
+                  <span className="cursor">█</span>
+                )}
+              </div>
+
+              {contactReady && (
+                <>
+                  <div className="contact-grid">
+
+                    <div className="contact-card">
+                      <span className="contact-icon">EMAIL</span>
+                      <h3>Email</h3>
+                      <p>asaraluca04@gmail.com</p>
+                    </div>
+
+                    <div className="contact-card">
+                      <span className="contact-icon">PHONE</span>
+                      <h3>Telefono</h3>
+                      <p>+39 349 383 3442</p>
+                    </div>
+
+                    <a
+                      className="contact-card"
+                      href="https://www.linkedin.com/in/luca-asara-363216365/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="contact-icon">LINK</span>
+                      <h3>LinkedIn</h3>
+                      <p>Apri profilo professionale</p>
+                    </a>
+
+                    <a
+                      className="contact-card"
+                      href="https://github.com/LucaAsara04"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="contact-icon">GIT</span>
+                      <h3>GitHub</h3>
+                      <p>Visualizza repository</p>
+                    </a>
+
+                  </div>
+
+                  <div className="cv-generator">
+
+                    <div className="cv-generator-header">
+                      <span>CV_GENERATOR.exe</span>
+                    </div>
+
+                    <p>
+                      Simula la generazione del CV partendo dai dati del profilo,
+                      dalla formazione, dall'esperienza professionale e dalle
+                      competenze visualizzate nel portfolio.
+                    </p>
+
+                    {!cvGenerating && (
+                      <button
+                        className="generate-cv-button"
+                        onClick={handleGenerateCv}
+                      >
+                        GENERATE CV
+                      </button>
+                    )}
+
+                    {cvGenerating && (
+                      <div className="cv-loading-box">
+                        <div className="cv-loading-line">
+                          Collecting profile data... [OK]
+                        </div>
+
+                        <div className="cv-loading-line">
+                          Extracting education modules... [OK]
+                        </div>
+
+                        <div className="cv-loading-line">
+                          Analyzing professional experience... [OK]
+                        </div>
+
+                        <div className="cv-loading-line">
+                          Loading skills database... [OK]
+                        </div>
+
+                        <div className="cv-loading-line">
+                          Building PDF document...
+                        </div>
+
+                        <div className="cv-progress-bar">
+                          <div
+                            className="cv-progress-fill"
+                            style={{
+                              width: `${cvProgress}%`
+                            }}
+                          ></div>
+                        </div>
+
+                        <div className="cv-progress-text">
+                          {cvProgress}%
+                        </div>
+                      </div>
+                    )}
+
+                    {cvReady && (
+                      <div className="cv-ready">
+                        Document ready. Download started.
+                      </div>
+                    )}
+
+                  </div>
+                </>
+              )}
+
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
