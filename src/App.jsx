@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import narutoPanel from "./assets/images/naruto-panel.jpg";
+import theLastOfUsImage from "./assets/images/the-last-of-us.jpg";
 
 
 const bootLines = [
@@ -261,26 +262,18 @@ function App() {
                   <h3>Naruto</h3>
 
                   <p>
-                    Guardo anime e manga da molti anni e rappresentano una delle passioni
-                    che mi accompagnano fin dall'infanzia. Tra tutte le opere che ho visto,
-                    quella che più mi ha influenzato è senza dubbio Naruto, una serie che
-                    seguo da quando ero bambino e che continua ancora oggi ad occupare un
-                    posto speciale tra i miei interessi.
+                    Guardo anime e leggo manga da molti anni e Naruto è da sempre la mia opera
+                    preferita.
                   </p>
 
                   <p>
-                    Al di là della storia e dei personaggi, Naruto mi ha trasmesso valori
-                    che ritengo fondamentali anche nella vita professionale. Mi ha insegnato
-                    a non arrendermi davanti alle difficoltà, a migliorare costantemente
-                    attraverso l'impegno e la disciplina e a credere che la crescita sia un
-                    processo graduale costruito nel tempo.
+                    Mi ha insegnato a non arrendermi davanti alle difficoltà, a migliorarmi
+                    costantemente e a perseguire gli obiettivi con determinazione.
                   </p>
 
                   <p>
-                    Un altro insegnamento che porto con me è l'importanza del lavoro di
-                    squadra. Gran parte dei risultati più importanti nella serie vengono
-                    raggiunti grazie alla collaborazione, alla fiducia reciproca e alla
-                    capacità di valorizzare le competenze di ogni persona.
+                    Mi ha inoltre trasmesso l'importanza del lavoro di squadra e della fiducia
+                    reciproca, valori che applico anche nella vita professionale.
                   </p>
 
                   <div className="learned-values">
@@ -290,6 +283,50 @@ function App() {
                       <li>Perseveranza</li>
                       <li>Miglioramento continuo</li>
                       <li>Lavoro di squadra</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="hobby-placeholder">
+                <span>MODULE_02</span>
+
+                <strong>Videogames</strong>
+
+                <div className="anime-panel-container">
+                  <img
+                    src={theLastOfUsImage}
+                    alt="The Last of Us"
+                    className="anime-panel"
+                  />
+                </div>
+
+                <div className="anime-content">
+                  <h3>The Last of Us</h3>
+
+                  <p>
+                    Gioco ai videogiochi fin da bambino e nel corso degli anni hanno spesso
+                    rappresentato un luogo dove rifugiarmi, rilassarmi e vivere storie capaci
+                    di lasciare qualcosa.
+                  </p>
+
+                  <p>
+                    The Last of Us è il titolo che più mi ha colpito. Mi ha insegnato che ogni
+                    azione ha delle conseguenze e che dietro ogni scelta esistono sempre motivazioni
+                    che spesso non sono immediatamente visibili.
+                  </p>
+
+                  <p>
+                    Mi ha portato a guardare persone e situazioni con maggiore comprensione,
+                    cercando di capire le cause prima di fermarmi alle apparenze.
+                  </p>
+
+                  <div className="learned-values">
+                    <h4>LEARNED VALUES</h4>
+
+                    <ul>
+                      <li>Empatia</li>
+                      <li>Consapevolezza delle conseguenze</li>
+                      <li>Comprendere le motivazioni</li>
                     </ul>
                   </div>
                 </div>
