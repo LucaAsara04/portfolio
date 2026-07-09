@@ -184,6 +184,10 @@ function App() {
                 if (folder === "Istruzione e Formazione") {
                   setActiveFolder("education");
                 }
+
+                if (folder === "Esperienze Professionali") {
+                  setActiveFolder("experience");
+                }
               }}
             >
               <div
@@ -421,14 +425,10 @@ function App() {
                       <li>Data Analysis</li>
                       <li>SQL</li>
                       <li>Python</li>
-                      <li>Database</li>
-                      <li>Project Work</li>
+                      <li>Machine Learning</li>
                     </ul>
-
                   </div>
-
                 </div>
-
               </div>
 
               {/* SIA */}
@@ -484,16 +484,112 @@ function App() {
                       <li>Informatica</li>
                       <li>Programmazione</li>
                       <li>Economia Aziendale</li>
-                      <li>Sistemi Informativi</li>
+                      <li>Diritto</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activeFolder === "experience" && (
+        <div className="card-overlay">
+          <div className="about-card">
+
+            <div className="card-header">
+              <span>EXPERIENCE.sys</span>
+
+              <button
+                className="card-close"
+                onClick={() => setActiveFolder(null)}
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="card-content">
+
+              <h2>Esperienze Professionali</h2>
+
+              <p className="about-intro">
+                La mia esperienza professionale mi ha permesso di trasformare le
+                competenze acquisite durante il percorso di studi in attività
+                concrete, lavorando a stretto contatto con processi aziendali,
+                utenti e tecnologie.
+              </p>
+
+              <div className="hobby-placeholder">
+
+                <span>MODULE_01</span>
+
+                <strong>FERVO SRL</strong>
+
+                <p
+                  style={{
+                    color: "#00ff88",
+                    marginTop: "10px",
+                    marginBottom: "20px",
+                  }}
+                >
+                  Gennaio 2025 - In Corso | Digital Support & Data Analyst
+                </p>
+
+                <div className="anime-content">
+
+                  <p>
+                    In FERVO ho l'opportunità di lavorare quotidianamente su attività
+                    legate alla digitalizzazione, all'automazione dei processi e al
+                    supporto agli utenti, contribuendo all'evoluzione tecnologica
+                    dell'azienda e al miglioramento delle attività operative.
+                  </p>
+
+                  <p>
+                    Collaboro con diversi reparti aziendali per comprendere esigenze,
+                    analizzare processi e progettare soluzioni in grado di aumentare
+                    efficienza, controllo e condivisione delle informazioni.
+                  </p>
+
+                  <p>
+                    Nel tempo ho partecipato a progetti che coinvolgono Microsoft 365,
+                    Power Automate, SharePoint, gestione dei dati, reportistica e
+                    sviluppo di strumenti digitali a supporto delle attività
+                    aziendali.
+                  </p>
+
+                  <p>
+                    Questa esperienza mi ha permesso di comprendere l'importanza
+                    dell'analisi dei processi, della comunicazione tra reparti e del
+                    ruolo che la tecnologia può avere nel generare valore concreto per
+                    le persone e per l'organizzazione.
+                  </p>
+
+                  <p>
+                    Ogni progetto rappresenta un'occasione per continuare a imparare,
+                    confrontarmi con nuove sfide e consolidare competenze tecniche e
+                    relazionali che oggi considero fondamentali nel mio percorso di
+                    crescita professionale.
+                  </p>
+
+                  <div className="learned-values">
+
+                    <h4>LEARNED SKILLS</h4>
+
+                    <ul>
+                      <li>Microsoft 365</li>
+                      <li>Power Automate</li>
+                      <li>SharePoint</li>
+                      <li>Data Analysis</li>
+                      <li>Digitalization</li>
+                      <li>Process Automation</li>
+                      <li>User Support</li>
+                      <li>Project Management</li>
                       <li>Problem Solving</li>
                     </ul>
-
                   </div>
-
                 </div>
-
               </div>
-
             </div>
           </div>
         </div>
