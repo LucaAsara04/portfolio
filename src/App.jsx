@@ -180,6 +180,10 @@ function App() {
                 if (folder === "About Me") {
                   setActiveFolder("about");
                 }
+
+                if (folder === "Istruzione e Formazione") {
+                  setActiveFolder("education");
+                }
               }}
             >
               <div
@@ -331,6 +335,165 @@ function App() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activeFolder === "education" && (
+        <div className="card-overlay">
+          <div className="about-card">
+
+            <div className="card-header">
+              <span>EDUCATION.log</span>
+
+              <button
+                className="card-close"
+                onClick={() => setActiveFolder(null)}
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="card-content">
+
+              <h2>Istruzione e Formazione</h2>
+
+              <p className="about-intro">
+                Il mio percorso formativo è stato orientato fin da subito
+                all'informatica, ai dati e alla comprensione dei processi aziendali.
+                Nel tempo ho approfondito competenze tecniche, analitiche e
+                organizzative che oggi rappresentano la base del mio lavoro.
+              </p>
+
+              {/* ITS */}
+
+              <div className="hobby-placeholder">
+
+                <span>MODULE_01</span>
+
+                <strong>
+                  ITS Angelo Rizzoli
+                </strong>
+
+                <p
+                  style={{
+                    color: "#00ff88",
+                    marginTop: "10px",
+                    marginBottom: "20px",
+                  }}
+                >
+                  2023 - 2025 | Big Data Specialist
+                </p>
+
+                <div className="anime-content">
+
+                  <p>
+                    Il percorso ITS come Big Data Specialist ha rappresentato un'importante
+                    occasione per consolidare e approfondire le mie competenze nel mondo dei
+                    dati e delle tecnologie informatiche. Durante questi due anni ho avuto modo
+                    di affrontare progetti pratici, lavorando su casi reali e sviluppando un
+                    approccio orientato all'analisi, alla progettazione e alla risoluzione dei
+                    problemi.
+                  </p>
+
+                  <p>
+                    Ho approfondito tematiche legate a database, SQL, programmazione e analisi
+                    dei dati, imparando a trasformare le informazioni in strumenti utili per
+                    supportare decisioni e processi aziendali. Il contesto ITS mi ha inoltre
+                    permesso di sviluppare capacità di collaborazione, gestione delle attività e
+                    apprendimento continuo, aspetti fondamentali in un settore in costante
+                    evoluzione.
+                  </p>
+
+                  <p>
+                    Grazie ai project work e alle attività svolte durante il percorso, ho potuto
+                    affinare un metodo di lavoro orientato agli obiettivi, maturando una visione
+                    più completa del ruolo che i dati e la tecnologia possono avere all'interno
+                    delle organizzazioni.
+                  </p>
+
+                  <div className="learned-values">
+
+                    <h4>LEARNED SKILLS</h4>
+
+                    <ul>
+                      <li>Data Analysis</li>
+                      <li>SQL</li>
+                      <li>Python</li>
+                      <li>Database</li>
+                      <li>Project Work</li>
+                    </ul>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* SIA */}
+
+              <div className="hobby-placeholder">
+
+                <span>MODULE_02</span>
+
+                <strong>
+                  ISS Piero della Francesca
+                </strong>
+
+                <p
+                  style={{
+                    color: "#00ff88",
+                    marginTop: "10px",
+                    marginBottom: "20px",
+                  }}
+                >
+                  2018 - 2023 | Sistemi Informativi Aziendali (SIA)
+                </p>
+
+                <div className="anime-content">
+
+                  <p>
+                    Il percorso di studi presso l'Istituto Piero della Francesca ha costituito
+                    la base della mia formazione tecnica e professionale. Dopo il biennio comune
+                    di Amministrazione, Finanza e Marketing, ho scelto di proseguire nell'indirizzo
+                    Sistemi Informativi Aziendali, attirato dall'unione tra tecnologia,
+                    organizzazione aziendale e gestione delle informazioni.
+                  </p>
+
+                  <p>
+                    Durante gli anni del percorso SIA ho approfondito discipline legate
+                    all'informatica, alla programmazione, alle reti e ai sistemi informativi,
+                    sviluppando al tempo stesso competenze economiche e organizzative. Questo mi
+                    ha permesso di comprendere come la tecnologia possa essere uno strumento di
+                    supporto concreto per i processi aziendali.
+                  </p>
+
+                  <p>
+                    Oltre alle conoscenze tecniche, questo percorso mi ha aiutato a sviluppare
+                    metodo di studio, capacità analitiche e problem solving, alimentando una
+                    curiosità verso il mondo dell'innovazione che mi ha poi portato a proseguire
+                    gli studi nell'ambito dei dati e della trasformazione digitale.
+                  </p>
+
+                  <div className="learned-values">
+
+                    <h4>LEARNED SKILLS</h4>
+
+                    <ul>
+                      <li>Informatica</li>
+                      <li>Programmazione</li>
+                      <li>Economia Aziendale</li>
+                      <li>Sistemi Informativi</li>
+                      <li>Problem Solving</li>
+                    </ul>
+
+                  </div>
+
+                </div>
+
+              </div>
+
             </div>
           </div>
         </div>
