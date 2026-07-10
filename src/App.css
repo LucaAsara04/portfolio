@@ -159,18 +159,17 @@ body {
 }
 
 .monitor {
-  width: 90%;
-  max-width: 1400px;
+  width: min(95vw, 1600px);
 
-  height: 85vh;
+  height: min(90vh, 1000px);
 
   border: 2px solid #00f5ff;
+
   border-radius: 18px;
 
   overflow: hidden;
 
   box-shadow: 0 0 25px rgba(0, 245, 255, 0.3);
-  background-color: rgba(5, 8, 22, 0.95);
 }
 
 .monitor-header {
@@ -194,23 +193,21 @@ body {
 .desktop {
   height: calc(100% - 70px);
 
-  padding: 10px 40px;
+  padding: 40px;
 
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  grid-template-rows: repeat(2, auto);
 
-  grid-template-rows: repeat(2, 1fr);
-
-  justify-items: left;
-
-  align-items: center;
-
+  justify-items: center;
   align-content: center;
+
+  gap: 80px 60px;
 }
 
 .folder {
-  width: 220px;
+  width: min(320px, 100%);
 
   display: flex;
   flex-direction: column;
@@ -223,20 +220,24 @@ body {
   transition: all 0.3s ease;
 }
 
+
+
 .folder:hover {
   transform: scale(1.08);
 }
 
 .folder-icon {
-  font-size: 90px;
+  font-size: clamp(90px, 7vw, 140px);
 }
+
 
 .folder span {
   text-align: center;
 
   margin-top: 15px;
 
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.2vw, 1.4rem);
+
   line-height: 1.4;
 }
 
@@ -257,7 +258,7 @@ body {
 }
 
 .about-card {
-  width: min(850px, 90%);
+  width: min(900px, 95%);
   max-height: 78vh;
 
   background:
@@ -534,6 +535,12 @@ body {
   gap: 22px;
 
   margin-top: 25px;
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 .contact-card {
@@ -740,5 +747,116 @@ body {
 
   to {
     transform: translateY(220%);
+  }
+}
+
+
+/* TABLET */
+
+@media (max-width: 1024px) {
+  .desktop {
+    grid-template-columns: repeat(2, 220px);
+
+    gap: 60px 40px;
+  }
+
+  .monitor {
+    width: 95%;
+    height: 90vh;
+  }
+}
+
+/* SMARTPHONE */
+
+@media (max-width: 768px) {
+  .monitor {
+    width: 100%;
+    height: 100vh;
+
+    border-radius: 0;
+  }
+
+  .monitor-header {
+    font-size: 1.2rem;
+  }
+
+  .desktop {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+
+    padding: 30px;
+  }
+
+  .folder {
+    width: 100%;
+  }
+
+  .folder-icon {
+    font-size: 75px;
+  }
+
+  .folder span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-card {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .card-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-intro,
+  .anime-content p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-name {
+    font-size: 2.4rem;
+    text-align: center;
+  }
+
+  .hero-role {
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1200px) {
+  .desktop {
+    gap: 60px 40px;
+  }
+
+  .folder {
+    width: min(260px, 100%);
+  }
+
+  .folder-icon {
+    font-size: 90px;
+  }
+}
+
+@media (max-width: 850px) {
+  .desktop {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 50px 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .desktop {
+    grid-template-columns: 1fr;
   }
 }
